@@ -1,0 +1,13 @@
+<nav>
+    <h2 class="logo">BLOG</h2>
+    <% if (user) { %>
+        <ul class="nav-links">
+            <a href="/sign-out"><li id="sign-out">Sign Out</li></a>
+        </ul>  
+    <% }else { %>
+        <ul class="nav-links">
+            <a href="/account/login"><li id="login">Login</li></a>
+            <a href="/account/new"><li id="create">Create account</li></a>
+        </ul>
+    <% } %>
+</nav>

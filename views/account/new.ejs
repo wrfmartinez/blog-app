@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <title>Create Account</title>
+</head>
+<body>
+    <div class="signup-container">
+        <h1>Sign Up</h1>
+        <div class="card">
+            <form action="/account/new" method="POST">
+                <label for="username">username: </label>
+                <input type="text" name="username" required/>
+                <label for="email">email: </label>
+                <input type="email" name="email" required/>
+                <label for="work">work: </label>
+                <input type="text" name="work" required/>
+                <label for="location">location: </label>
+                <input type="text" name="location" required/>
+                <label for="education">education: </label>
+                <input type="text" name="education" required/>
+                <button type="submit" class="submit-btn">Submit</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

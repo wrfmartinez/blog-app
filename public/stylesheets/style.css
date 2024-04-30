@@ -1,0 +1,112 @@
+
+body{
+    margin: 0;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    height: 100dvh;
+    background-color: #efefef;
+}
+nav{
+    padding: 0 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+    border-bottom: 1px solid rgb(228, 228, 228);
+}
+form{
+    font-weight: 600;
+    color: white;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+}
+a{
+    text-decoration: none;
+    color: black;
+}
+textarea{
+    height: 150px;
+    width: 100%;
+}
+.logo{
+    color: white;
+    background-color: black;
+    padding: 8px;
+    font-size: 20px;
+    border-radius: 5px;
+}
+.nav-links{
+    display: flex;
+    gap: 10px;
+    list-style: none;
+    align-items: center;
+}
+#create{
+    border: 1px solid black;
+    padding: 5px;
+    border-radius: 5px;
+
+}
+#login{
+    padding: 5px;
+    border-radius: 5px;
+}
+#login:hover{
+    background-color: rgb(216, 141, 141);
+    text-decoration: underline;
+}
+#create:hover{
+    color: white;
+    background-color: rgb(223, 67, 67);
+    text-decoration: underline;
+}
+.signup-container , .post-container, .login-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100dvh;
+}
+.card{
+    height: 400px;
+    width: 300px;
+    background-color: rgb(0, 0, 0);
+    border: 1px solid rgb(124, 124, 122);
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.submit-btn{
+    width: 100%;
+    margin-top: 10px;
+    background-color: transparent;
+    color: white;
+    border: 1px solid white;
+    border-radius: 5px;
+    padding: 5px;
+}
+.submit-btn:hover{
+    background-color: rgb(223, 67, 67);
+}
+#home-container{
+    display: flex;
+    gap: 10px;
+    padding: 0 15px;
+}
+#post-head{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+#post-container{
+    width: 100%;
+}
+#post-card{
+    background-color: white;
+    border: 1px solid lightgray;
+    border-radius: 8px;
+    padding: 10px;
+}

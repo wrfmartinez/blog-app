@@ -62,7 +62,7 @@ textarea{
     background-color: rgb(223, 67, 67);
     text-decoration: underline;
 }
-.signup-container , .post-container, .login-container{
+.signup-container , .post-container, .login-container, .user-container{
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -105,8 +105,50 @@ textarea{
     width: 100%;
 }
 #post-card{
+    margin-bottom: 10px;
     background-color: white;
     border: 1px solid lightgray;
     border-radius: 8px;
     padding: 10px;
+}
+#user-card{
+    width: 500px;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    border: 1px solid lightgray;
+    border-radius: 8px;
+    padding: 10px;
+}
+#edit{
+    padding: 5px;
+    border-radius: 5px;
+}
+#edit:hover{
+    cursor: pointer;
+    background-color: lightgrey;
+    text-decoration: underline;
+}
+#x{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+    border: none;
+    border-radius: 2px;
+    height: 30px;
+    width: 30px;
+}
+#x:hover{
+    cursor: pointer;
+    transform: scale(1.2);
+}
+.button-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
 }

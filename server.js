@@ -11,14 +11,15 @@ mongoose.connect(process.env.MONGODB_URI);
 
 const User = require('./models/user.js');
 const Post = require('./models/post.js');
+const post = require('./models/post.js');
 
 app.use(express.urlencoded({ extended: false }));
-app.use(express.static('public')); 
+app.use(express.static('public'));
 app.use(methodOverride('_method'));
 app.use(morgan('dev'));
 
 app.use(session({
-    secret: process.env.SESSION_SECRET,
+    secret: "blog-app",
     resave: false,
     saveUninitialized: true,
 }));
@@ -28,14 +29,29 @@ app.use(session({
 
 
 app.get('/account/login' , (req, res) => {
-    res.render('./account/login.ejs')
+    res.render('./account/login.ejs', {
+        user: req.session.user
+    })
 })
 
 app.get('/account/new', (req, res) => {
-    res.render('./account/new.ejs')
+    res.render('./account/new.ejs', {
+        user: req.session.user
+    } )
 })
 app.get('/post/new', (req, res) => {
-    res.render('./post/new.ejs')
+    res.render('./post/new.ejs', {
+        user: req.session.user
+    })
+})
+app.get('/post/:postId/edit' , async(req, res) => {
+    const foundPost = await Post.findById(req.params.postId);
+
+
+    res.render('./post/edit.ejs', {
+        user: req.session.user,
+        post: foundPost,
+    })
 })
 app.post('/account/new', async (req, res) => {
     const account = await User.create(req.body);
@@ -49,6 +65,7 @@ app.post('/account/login' ,async (req, res) => {
 
     req.session.user = {
         username: emailInDatabase.username,
+        id: emailInDatabase.id
     }
 
     res.redirect('/');
@@ -67,12 +84,46 @@ app.post('/post/new', async (req, res) => {
         title: req.body.title,
         content: req.body.content,
         createdBy: req.session.user.username,
+        accountId: req.session.user.id,
     });
     res.redirect('/');
+})
+app.delete('/post/:postId', async (req, res) => {
+
+    const selectPost = await Post.findById(req.params.postId);
+
+   if(req.session.user){
+        if(req.session.user.id === selectPost.accountId) {
+            await Post.findByIdAndDelete(req.params.postId);
+        }
+   }
+
+    res.redirect('/');
+
+
 })
 app.get('/sign-out', (req, res) => {
     req.session.destroy();
     res.redirect('/')
+})
+
+app.get('/account/:accountId/show', async (req, res) => {
+    const user = await User.findById(req.params.accountId);
+
+    res.render('./account/show.ejs',{
+        user: user
+    })
+})
+app.put('/post/:postId/edit', async (req, res) => {
+    const selectPost = await Post.findById(req.params.postId);
+
+    if(req.session.user){
+        if(req.session.user.id === selectPost.accountId) {
+            await Post.findByIdAndUpdate(req.params.postId, req.body);
+        }
+   }
+    res.redirect('/');
+
 })
 
 

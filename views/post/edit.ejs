@@ -4,19 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/stylesheets/style.css">
-    <title>Create Post</title>
+    <title>Edit Post</title>
 </head>
 <body>
     <%- include('../partials/navbar.ejs'); %>
     <div class="post-container">
-        <h1>Create Post</h1>
+        <h1>Edit Post</h1>
         <div class="card">
-            <form action="/post/new" method="POST">
+            <form action="/post/<%=post._id%>/edit?_method=PUT" method="POST">
                 <label for="title">Title: </label>
-                <input type="text" name="title" required/>
+                <input type="text" name="title" value="<%= post.title %>" required/>
                 <label for="content">Post content: </label>
-                <textarea type="text" name="content" required></textarea>
-                <button class="submit-btn">Submit</button>
+                <textarea type="text" name="content" required><%= post.content %></textarea>
+                <button class="submit-btn">Edit</button>
             </form>
         </div>
     </div>

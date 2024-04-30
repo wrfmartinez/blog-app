@@ -12,7 +12,11 @@ const postSchema = new mongoose.Schema({
     createdBy: {
         type: String,
         required: true,
-    }
+    },
+    accountId: {
+        type: String,
+        required: true,
+    },
 });
 
 module.exports = mongoose.model('Post', postSchema);

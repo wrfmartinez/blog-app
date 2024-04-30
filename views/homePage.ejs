@@ -22,26 +22,26 @@
             <% if (posts.length === 0) { %>
              <p>No posts yet....</p>
             <% } %>
-            <% posts.forEach(element => { %>
+            <% posts.forEach(post => { %>
                 <div id="post-card">
-                    <h2><%= element.title %></h2>
-                    <a href="/account/<%= element.accountId %>/show"><p><%= element.createdBy %></p></a>
-                    <p><%= element.content %></p>
-                     <% if (user && user.id === element.accountId) { %>
+                    <h2><%= post.title %></h2>
+                    <a href="/account/<%= post.accountId %>/show"><p><%= post.createdBy %></p></a>
+                    <p><%= post.content %></p>
+                     <% if (user && user.id === post.accountId) { %>
                         <div class="button-container">
-                            <a href="/post/<%= element._id %>/edit" id="edit">Edit</a>
-                            <form action="/post/<%=element._id%>?_method=DELETE" method="POST">
+                            <a href="/post/<%=post._id%>/edit" id="edit">Edit</a>
+                            <form action="/post/<%=post._id%>?_method=DELETE" method="POST">
                                 <button type="submit" id="x">❌</button>
                             </form>
-                    </div>
+                        </div>
                      <% } %>
                 </div>
             <% }) %>
         </div>
         <div id="all-users">
             <h2>Top Users</h2>
-            <% users.forEach(element => { %>
-                <a href="/account/<%= element._id %>/show"><p><%= element.username %></p></a>
+            <% users.forEach(user => { %>
+                <a href="/account/<%=user._id%>/show"><p><%= user.username %></p></a>
             <% }) %>
         </div>
     </div>

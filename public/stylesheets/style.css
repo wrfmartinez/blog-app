@@ -102,7 +102,7 @@ textarea{
     justify-content: space-between;
 }
 #post-container{
-    width: 100%;
+    width: 50%;
 }
 #post-card{
     margin-bottom: 10px;
@@ -148,7 +148,45 @@ textarea{
 }
 .button-container{
     display: flex;
-    justify-content: center;
+    justify-content: end;
     align-items: center;
     gap: 10px;
+}
+#side-card{
+    margin-top: 10px;
+    width: 300px;
+    font-size: 12px;
+    background-color: white;
+    border: 1px solid lightgray;
+    border-radius: 8px;
+    padding: 10px;
+}
+#all-users{
+    display: flex;
+    width: 30%;
+    margin-top: 10px;
+    background-color: white;
+    border: 1px solid lightgray;
+    border-radius: 8px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+#all-users a{
+    text-decoration: underline;
+}
+@media (max-width: 750px) {
+    #side-card {
+        width: 96%;
+    }
+    #home-container{
+        flex-direction: column;
+        align-items: center;
+    }
+    #post-container{
+        width: 100%;
+    }
+    #all-users{
+        width: 100%;
+    }
 }

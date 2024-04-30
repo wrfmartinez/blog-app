@@ -9,19 +9,24 @@
 <body>
     <%- include('./partials/navbar.ejs'); %>
     <div id="home-container">
-        <div>
-            <h1>Blog Community where people can share ideas</h1> 
+        <div id="side-card">
+            <h1>Blog Community where people can share ideas</h1>
         </div>
         <div id="post-container">
             <div id="post-head">
                 <h2>Posts</h2>
-                <a href="/post/new">Create New Post</a>
+                <% if (user) { %>
+                    <a href="/post/new">Create New Post</a>
+                <% } %>
             </div>
+            <% if (posts.length === 0) { %>
+             <p>No posts yet....</p>
+            <% } %>
             <% posts.forEach(element => { %>
                 <div id="post-card">
                     <h2><%= element.title %></h2>
                     <a href="/account/<%= element.accountId %>/show"><p><%= element.createdBy %></p></a>
-                    <p><%= element.content %></p>     
+                    <p><%= element.content %></p>
                      <% if (user && user.id === element.accountId) { %>
                         <div class="button-container">
                             <a href="/post/<%= element._id %>/edit" id="edit">Edit</a>
@@ -29,9 +34,15 @@
                                 <button type="submit" id="x">❌</button>
                             </form>
                     </div>
-                     <% } %>    
+                     <% } %>
                 </div>
-            <% }) %> 
+            <% }) %>
+        </div>
+        <div id="all-users">
+            <h2>Top Users</h2>
+            <% users.forEach(element => { %>
+                <a href="/account/<%= element._id %>/show"><p><%= element.username %></p></a>
+            <% }) %>
         </div>
     </div>
 </body>

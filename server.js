@@ -19,7 +19,7 @@ app.use(methodOverride('_method'));
 app.use(morgan('dev'));
 
 app.use(session({
-    secret: "blog-app",
+    secret: "blog-app-cookies",
     resave: false,
     saveUninitialized: true,
 }));
@@ -73,8 +73,10 @@ app.post('/account/login' ,async (req, res) => {
 })
 app.get('/' , async(req, res) => {
     const posts = await Post.find({});
+    const users = await User.find({});
     res.render('homePage.ejs', {
         posts: posts,
+        users: users,
         user: req.session.user
     })
 })
